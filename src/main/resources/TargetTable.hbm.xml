@@ -1,0 +1,5 @@
+<hibernate-mapping package="ru.newdv.entity.targett">
+    <class name="TargetTable" table="LINK">
+        <id name="targetLink" type="string" column="URL"/>
+    </class>
+</hibernate-mapping>

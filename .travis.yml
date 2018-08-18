@@ -10,3 +10,8 @@ cache:
 
 script:
   - gradle build
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t links .
+  - docker images
+  - docker tag links $DOCKER_USERNAME/links
+  - docker push $DOCKER_USERNAME/links

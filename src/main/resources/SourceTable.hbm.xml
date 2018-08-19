@@ -1,6 +1,6 @@
 <hibernate-mapping package="ru.newdv.entity.source">
-    <class name="SourceTable" table="ARTICLE">
-        <id name="sourceID" type="long" column="ID"/>
-        <property name="sourceText" type="text" column="TXT"/>
+    <class name="SourceTable" table="${LINKS_SOURCE_TABLE}">
+        <id name="sourceID" type="long" column="${LINKS_SOURCE_ID}"/>
+        <property name="sourceText" type="text" column="${LINKS_SOURCE_TEXT}"/>
     </class>
 </hibernate-mapping>

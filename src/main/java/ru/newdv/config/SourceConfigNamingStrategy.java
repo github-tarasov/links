@@ -15,8 +15,8 @@ public class SourceConfigNamingStrategy extends PhysicalNamingStrategyStandardIm
     private final String LINKS_SOURCE_TEXT_PROPERTY = "LINKS_SOURCE_TEXT";
 
     private final String LINKS_SOURCE_TABLE_DEFAULT = "ARTICLE";
-    private final String LINKS_SOURCE_ID_DEFAULT = "TXT";
-    private final String LINKS_SOURCE_TEXT_DEFAULT = "ID";
+    private final String LINKS_SOURCE_ID_DEFAULT = "ID";
+    private final String LINKS_SOURCE_TEXT_DEFAULT = "TXT";
 
     private String tableName;
     private String idColumnName;

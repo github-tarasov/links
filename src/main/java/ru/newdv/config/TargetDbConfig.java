@@ -45,10 +45,10 @@ public class TargetDbConfig {
         factoryBean.setDataSource(targetDataSource());
         factoryBean.setJpaVendorAdapter(vendorAdapter);
         factoryBean.setPackagesToScan(TargetTable.class.getPackage().getName());
-        factoryBean.setMappingResources("TargetTable.hbm.xml");
         factoryBean.setJpaProperties(new Properties() {{
             put(Environment.DEFAULT_SCHEMA, "public");
             put(Environment.FORMAT_SQL, "true");
+            put(Environment.PHYSICAL_NAMING_STRATEGY, "ru.newdv.config.TargetConfigNamingStrategy");
         }});
         return factoryBean;
     }

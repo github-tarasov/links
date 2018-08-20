@@ -48,10 +48,10 @@ public class SourceDbConfig {
         factoryBean.setDataSource(sourceDataSource());
         factoryBean.setJpaVendorAdapter(vendorAdapter);
         factoryBean.setPackagesToScan(SourceTable.class.getPackage().getName());
-        factoryBean.setMappingResources("SourceTable.hbm.xml");
         factoryBean.setJpaProperties(new Properties() {{
             put(Environment.DEFAULT_SCHEMA, "public");
             put(Environment.FORMAT_SQL, "true");
+            put(Environment.PHYSICAL_NAMING_STRATEGY, "ru.newdv.config.SourceConfigNamingStrategy");
         }});
         return factoryBean;
     }

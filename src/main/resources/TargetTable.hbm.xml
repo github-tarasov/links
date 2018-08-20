@@ -1,5 +1,0 @@
-<hibernate-mapping package="ru.newdv.entity.targett">
-    <class name="TargetTable" table="${LINKS_TARGET_TABLE}">
-        <id name="targetLink" type="string" column="${LINKS_TARGET_LINK}"/>
-    </class>
-</hibernate-mapping>

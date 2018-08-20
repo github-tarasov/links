@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
 @Component
 public class DataInitializer {
 
-    private final Logger loger = LogManager.getLogger(DataInitializer.class.getName());
+    private final Logger logger = LogManager.getLogger(DataInitializer.class.getName());
 
     @Autowired
     private SourceRepository sourceRepository;
@@ -33,7 +33,7 @@ public class DataInitializer {
 
     public void run() {
         List<SourceTable> sourceList = sourceRepository.findAll();
-        loger.debug("Source table has " + sourceList.size() + " rows");
+        logger.debug("Source table has " + sourceList.size() + " rows");
         if (!CollectionUtils.isEmpty(sourceList)) {
 
             Set<String> links = new HashSet<String>();
@@ -52,7 +52,7 @@ public class DataInitializer {
                     });
 
         } else {
-            loger.debug("Source table is empty!");
+            logger.debug("Source table is empty!");
         }
 
     }

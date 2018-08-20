@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
+import org.springframework.util.StringUtils;
 
 public class SourceConfigNamingStrategy extends PhysicalNamingStrategyStandardImpl {
 
@@ -23,9 +24,18 @@ public class SourceConfigNamingStrategy extends PhysicalNamingStrategyStandardIm
     private String textColumnName;
 
     public SourceConfigNamingStrategy() {
-        tableName = System.getProperty(LINKS_SOURCE_TABLE_PROPERTY, LINKS_SOURCE_TABLE_DEFAULT);
-        idColumnName = System.getProperty(LINKS_SOURCE_ID_PROPERTY, LINKS_SOURCE_ID_DEFAULT);
-        textColumnName = System.getProperty(LINKS_SOURCE_TEXT_PROPERTY, LINKS_SOURCE_TEXT_DEFAULT);
+        tableName = System.getenv(LINKS_SOURCE_TABLE_PROPERTY);
+        if (StringUtils.isEmpty(tableName)) {
+            tableName = LINKS_SOURCE_TABLE_DEFAULT;
+        }
+        idColumnName = System.getenv(LINKS_SOURCE_ID_PROPERTY);
+        if (StringUtils.isEmpty(idColumnName)) {
+            idColumnName = LINKS_SOURCE_ID_DEFAULT;
+        }
+        textColumnName = System.getenv(LINKS_SOURCE_TEXT_PROPERTY);
+        if (StringUtils.isEmpty(textColumnName)) {
+            textColumnName = LINKS_SOURCE_TEXT_DEFAULT;
+        }
 
         logger.debug("tableName=" + tableName);
         logger.debug("idColumnName=" + idColumnName);

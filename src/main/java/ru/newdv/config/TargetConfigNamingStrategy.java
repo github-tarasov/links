@@ -6,6 +6,7 @@ import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
 public class TargetConfigNamingStrategy extends PhysicalNamingStrategyStandardImpl {
 
@@ -21,8 +22,14 @@ public class TargetConfigNamingStrategy extends PhysicalNamingStrategyStandardIm
     private String urlColumnName;
 
     public TargetConfigNamingStrategy() {
-        tableName = System.getProperty(LINKS_TARGET_TABLE_PROPERTY, LINKS_TARGET_TABLE_DEFAULT);
-        urlColumnName = System.getProperty(LINKS_TARGET_LINK_PROPERTY, LINKS_TARGET_LINK_DEFAULT);
+        tableName = System.getenv(LINKS_TARGET_TABLE_PROPERTY);
+        if (StringUtils.isEmpty(tableName)) {
+            tableName = LINKS_TARGET_TABLE_DEFAULT;
+        }
+        urlColumnName = System.getenv(LINKS_TARGET_LINK_PROPERTY);
+        if (StringUtils.isEmpty(urlColumnName)) {
+            urlColumnName = LINKS_TARGET_LINK_DEFAULT;
+        }
 
         logger.debug("tableName=" + tableName);
         logger.debug("urlColumnName=" + urlColumnName);

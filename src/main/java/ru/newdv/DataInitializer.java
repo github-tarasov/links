@@ -33,9 +33,9 @@ public class DataInitializer {
 
     public void run() {
         List<SourceTable> sourceList = sourceRepository.findAll();
-        logger.debug("Source table has " + sourceList.size() + " rows");
         if (!CollectionUtils.isEmpty(sourceList)) {
 
+            logger.debug("Source table has " + sourceList.size() + " rows");
             Set<String> links = new HashSet<String>();
             for (SourceTable s: sourceList) {
                 links.addAll(stringLinkExtractor.parse(s.getSourceText()));
